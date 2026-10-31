@@ -372,3 +372,70 @@ label { display: block; font-weight: 600; }
   .vault-sports__mobile-grid {grid-template-columns:repeat(2,minmax(0,1fr));}
 }
 @media(prefers-reduced-motion:reduce){.vault-hero__copy,.vault-hero__light{animation:none!important}}
+
+/* THE PROSPECT VAULT — CINEMATIC STADIUM LIGHT */
+
+.vault-hero__stadium-light {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+
+  background: linear-gradient(
+    110deg,
+    transparent 28%,
+    rgba(255, 196, 57, 0.04) 38%,
+    rgba(255, 217, 115, 0.12) 44%,
+    rgba(255, 246, 200, 0.28) 50%,
+    rgba(255, 209, 83, 0.12) 56%,
+    transparent 68%
+  );
+
+  filter: blur(12px);
+  mix-blend-mode: screen;
+
+  animation: stadium-light-sweep 9s ease-in-out infinite;
+}
+
+/* Spotlight crosses the entire hero */
+@keyframes stadium-light-sweep {
+  0% {
+    transform: translateX(-110%);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  65% {
+    transform: translateX(110%);
+    opacity: 1;
+  }
+
+  78%,
+  100% {
+    transform: translateX(110%);
+    opacity: 0;
+  }
+}
+
+/* Keep text and buttons above the moving light */
+.vault-hero__content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Preserve the original bottom gold light */
+.vault-hero__light {
+  z-index: 1;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .vault-hero__stadium-light {
+    animation: none;
+    opacity: 0;
+  }
+}
