@@ -1,168 +1,97 @@
 import Link from 'next/link';
 
 const sports = [
-  'Football',
-  'Basketball',
-  'Baseball / Softball',
-  'Soccer',
-  'Track & Field',
-  'Wrestling',
-  'Volleyball',
-  'Cross Country',
-  'Golf',
-  'Bowling',
-  'Swimming / Diving',
-  'Tennis',
-  'Lacrosse',
-  'Ice / Field Hockey',
+  'Football', 'Basketball', 'Baseball / Softball', 'Soccer',
+  'Track & Field', 'Wrestling', 'Volleyball', 'Cross Country',
+  'Golf', 'Bowling', 'Swimming / Diving', 'Tennis',
+  'Lacrosse', 'Ice / Field Hockey',
 ];
 
-const heroFeatures = [
-  ['01', 'GET RECRUITED'],
-  ['02', 'SHOWCASE TALENT'],
-  ['03', 'BUILD YOUR BRAND'],
-];
+const highlights = [
+  { title: 'GET RECRUITED', icon: 'person' },
+  { title: 'SHOWCASE YOUR TALENT', icon: 'chart' },
+  { title: 'BUILD YOUR BRAND', icon: 'cap' },
+  { title: 'UNLOCK NIL OPPORTUNITIES', icon: 'coins' },
+] as const;
 
 const features = [
-  {
-    number: '01',
-    title: 'BUILD YOUR PROFILE',
-    body: 'Give coaches and brands a polished destination for your athletic story, achievements and goals.',
-  },
-  {
-    number: '02',
-    title: 'SHOW YOUR GAME',
-    body: 'Organize highlights, images, academic milestones and verified performance information.',
-  },
-  {
-    number: '03',
-    title: 'OWN YOUR NEXT LEVEL',
-    body: 'Build a recruiting presence now and develop a professional NIL brand as your journey evolves.',
-  },
+  { number: '01', title: 'BUILD YOUR PROFILE', body: 'Give coaches and brands a polished destination for your story, athletic achievements and goals.' },
+  { number: '02', title: 'SHOW YOUR GAME', body: 'Organize your best highlights, images, academics and verified performance information.' },
+  { number: '03', title: 'OWN YOUR NEXT LEVEL', body: 'Develop a recruiting presence today and a professional NIL brand tomorrow.' },
 ];
+
+type HighlightIcon = (typeof highlights)[number]['icon'];
+
+function HighlightSymbol({ icon }: { icon: HighlightIcon }) {
+  return (
+    <svg viewBox="0 0 42 42" width="36" height="36" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {icon === 'person' && <><circle cx="21" cy="13" r="7" /><path d="M8 37v-5c0-8 6-12 13-12s13 4 13 12v5H8Z" /><path d="M30 8l2-2m-2 9h4" /></>}
+      {icon === 'chart' && <><path d="M6 35V25h7v10M17 35V19h7v16M28 35V11h7v24" /><path d="M7 17l10-7 8 2 10-8M29 4h6v6" /></>}
+      {icon === 'cap' && <><path d="m3 16 18-9 18 9-18 9-18-9Z" /><path d="M10 21v9c5 5 17 5 22 0v-9M39 16v14" /></>}
+      {icon === 'coins' && <><ellipse cx="21" cy="12" rx="13" ry="5" /><path d="M8 12v8c0 3 6 5 13 5s13-2 13-5v-8M8 20v8c0 3 6 5 13 5s13-2 13-5v-8M8 28v5c0 3 6 5 13 5s13-2 13-5v-5" /></>}
+    </svg>
+  );
+}
 
 export default function Home() {
   return (
     <>
-      {/* Premium hero: all links and text are real, interactive page elements. */}
-      <section className="hero-premium" aria-labelledby="hero-heading">
-        <div className="hero-premium-bg" aria-hidden="true" />
-        <div className="hero-premium-lines" aria-hidden="true" />
-
-        <div className="content-width hero-premium-grid">
-          <div className="hero-premium-copy">
-            <p className="eyebrow">
-              RECRUIT &nbsp; | &nbsp; NIL &nbsp; | &nbsp; BRAND &nbsp; | &nbsp; ELEVATE
-            </p>
-            <p className="hero-kicker">
-              THE RECRUITING &amp; NIL PLATFORM FOR <span>ALL ATHLETES</span>
-            </p>
-            <h1 id="hero-heading">
-              MORE THAN<br />
-              A PROFILE.<br />
+      <section className="vault-hero" aria-labelledby="vault-hero-title">
+        {/* The artwork is a crop of the approved design: NO baked navigation or CTA text. */}
+        <div className="vault-hero__content content-width">
+          <div className="vault-hero__copy">
+            <p className="vault-hero__eyebrow">RECRUIT <span>|</span> NIL <span>|</span> BRAND <span>|</span> ELEVATE</p>
+            <p className="vault-hero__kicker">THE RECRUITING &amp; NIL PLATFORM FOR <strong>ALL ATHLETES</strong></p>
+            <h1 id="vault-hero-title">
+              MORE THAN A<br />
+              PROFILE.<br />
               A PLATFORM FOR<br />
               <em>YOUR NEXT LEVEL.</em>
             </h1>
-            <p className="hero-description">
-              Build your exposure, showcase your talent, connect with opportunities,
-              and grow your athletic brand — all in one place.
+            <p className="vault-hero__description">
+              Build your exposure, showcase your talent, connect with recruiters,
+              and unlock NIL opportunities — all in one powerful platform.
             </p>
-            <div className="hero-buttons">
-              <Link href="/signup" className="button">
-                Create Your Athlete Profile <span aria-hidden="true">→</span>
-              </Link>
-              <Link href="/how-it-works" className="outline-button">
-                See How It Works <span aria-hidden="true">→</span>
-              </Link>
+            <div className="vault-hero__buttons">
+              <Link href="/signup" className="vault-hero__primary">Create Your Athlete Profile <span aria-hidden="true">→</span></Link>
+              <Link href="/how-it-works" className="vault-hero__secondary"><span className="vault-hero__play" aria-hidden="true">▶</span> Watch How It Works</Link>
             </div>
-            <p className="hero-note">
-              HIGH SCHOOL RECRUITING &nbsp; • &nbsp; COLLEGIATE NIL &nbsp; • &nbsp; EVERY SPORT
-            </p>
-            <div className="hero-feature-mini" aria-label="Platform highlights">
-              {heroFeatures.map(([number, label]) => (
-                <div className="hero-feature-mini-card" key={number}>
-                  <strong>{number}</strong>
-                  <span>{label}</span>
+            <div className="vault-hero__highlights" aria-label="Platform capabilities">
+              {highlights.map((item) => (
+                <div className="vault-hero__highlight" key={item.title}>
+                  <HighlightSymbol icon={item.icon} />
+                  <span>{item.title}</span>
                 </div>
               ))}
             </div>
           </div>
+        </div>
+        <img
+          className="vault-hero__art"
+          src="/images/hero-athletes-devices.webp"
+          width={1056}
+          height={625}
+          alt="Multicultural athletes representing baseball, basketball, football, soccer and track, alongside The Prospect Vault desktop and phone previews with the official logo"
+        />
+        <div className="vault-hero__light" aria-hidden="true" />
+      </section>
 
-          <div className="hero-premium-visual">
-            <figure className="athlete-banner-card">
-              <img
-                src="/images/prospect-vault-athlete-lineup.webp"
-                alt="Athletes from a variety of sports pictured under stadium lights"
-                width={1055}
-                height={320}
-              />
-              <figcaption className="athlete-banner-caption">
-                EVERY ATHLETE HAS A STORY WORTH SEEING.
-              </figcaption>
-            </figure>
-
-            <div className="device-showcase" aria-label="Illustrative athlete profile on desktop and phone">
-              <div className="laptop-shell">
-                <div className="laptop-topbar" aria-hidden="true">
-                  <span />
-                  <span />
-                  <span />
-                  <p>THE PROSPECT VAULT / PROFILE PREVIEW</p>
-                </div>
-                <div className="laptop-screen">
-                  <div className="laptop-screen-left">
-                    <img
-                      src="/icons/prospect-vault-app-icon.png"
-                      alt="The Prospect Vault app logo"
-                      width={170}
-                      height={170}
-                      className="device-icon"
-                    />
-                  </div>
-                  <div className="laptop-screen-right">
-                    <p className="screen-label">SAMPLE ATHLETE PROFILE</p>
-                    <h3>JADEN CARTER</h3>
-                    <p className="screen-sub">Quarterback · Class of 2027</p>
-                    <div className="screen-checks">
-                      <span>✓ Film &amp; highlights</span>
-                      <span>✓ Performance stats</span>
-                      <span>✓ Academics</span>
-                      <span>✓ Recruiting information</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="phone-shell">
-                <div className="phone-notch" aria-hidden="true" />
-                <div className="phone-screen">
-                  <img
-                    src="/icons/prospect-vault-app-icon.png"
-                    alt="The Prospect Vault mobile app icon"
-                    width={110}
-                    height={110}
-                    className="phone-icon"
-                  />
-                  <p>YOUR VAULT.<br />ANYWHERE.</p>
-                </div>
-              </div>
-            </div>
-            <p className="screen-footnote">A professional profile on every screen.</p>
+      {/* The full sports strip from the approved concept is a separate image, never duplicated in the hero. */}
+      <section className="vault-sports" aria-label="Sports supported by The Prospect Vault">
+        <img className="vault-sports__poster" src="/images/sports-showcase.webp" alt="Built for athletes across every sport: football, basketball, baseball, soccer, track and field, wrestling, volleyball, cross country, golf, bowling, swimming and diving, tennis, lacrosse, ice hockey and field hockey" width={1671} height={204} />
+        <div className="vault-sports__mobile content-width">
+          <h2>BUILT FOR ATHLETES ACROSS <em>EVERY SPORT</em></h2>
+          <div className="vault-sports__mobile-grid">
+            {sports.map((sport) => <span key={sport}>{sport}</span>)}
           </div>
         </div>
       </section>
 
-      {/* Preserve all of the original below-the-fold homepage sections. */}
       <section className="hero-action content-width" aria-labelledby="spotlight-heading">
         <div>
           <span className="eyebrow">YOUR TALENT. YOUR STORY. YOUR NEXT LEVEL.</span>
-          <h2 id="spotlight-heading">
-            Don’t just play the game. <em>Own your spotlight.</em>
-          </h2>
-          <p>
-            From high school recruiting to collegiate NIL, build a professional
-            home for your athletic journey.
-          </p>
+          <h2 id="spotlight-heading">Don’t just play the game. <em>Own your spotlight.</em></h2>
+          <p>From high school recruiting to collegiate NIL, build a professional home for your athletic journey.</p>
         </div>
         <div className="action-buttons">
           <Link href="/recruiting" className="outline-button">Explore Recruiting →</Link>
@@ -170,26 +99,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section content-width" aria-labelledby="sports-heading">
-        <div className="section-heading">
-          <span className="eyebrow">BUILT FOR EVERY ATHLETE</span>
-          <h2 id="sports-heading">One platform. Every sport. Every ambition.</h2>
-          <p className="section-subtitle">
-            From your first recruiting reel to your next brand partnership,
-            your journey belongs here.
-          </p>
-        </div>
-        <div className="sport-grid">
-          {sports.map((sport) => (
-            <span className="sport-chip" key={sport}>{sport}</span>
-          ))}
-        </div>
-      </section>
-
-      <section className="section section-dark" aria-labelledby="features-heading">
+      <section className="section section-dark" aria-labelledby="advantage-heading">
         <div className="content-width">
           <span className="eyebrow">THE PROSPECT VAULT ADVANTAGE</span>
-          <h2 id="features-heading">Make every opportunity count.</h2>
+          <h2 id="advantage-heading">Make every opportunity count.</h2>
           <div className="feature-grid">
             {features.map((feature) => (
               <article className="feature-card" key={feature.number}>
@@ -202,23 +115,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section content-width journey-grid" aria-label="Athlete pathways">
+      <section className="section content-width journey-grid" aria-label="Athlete journeys">
         <article className="journey-card">
           <span className="eyebrow">HIGH SCHOOL RECRUITING</span>
           <h2>Get ready to be seen.</h2>
-          <p>
-            Showcase your film, athletic performance, academics and recruiting
-            information in one organized profile.
-          </p>
+          <p>Showcase your film, athletic performance, academics and recruiting information in one organized profile.</p>
           <Link className="text-link" href="/recruiting">Explore recruiting →</Link>
         </article>
         <article className="journey-card">
           <span className="eyebrow">COLLEGIATE NIL</span>
           <h2>Make your name your brand.</h2>
-          <p>
-            Present your story, audience and partnership interests through
-            a professional athlete media kit.
-          </p>
+          <p>Present your story, audience and partnership interests through a professional athlete media kit.</p>
           <Link className="text-link" href="/nil">Explore NIL →</Link>
         </article>
       </section>
@@ -227,9 +134,7 @@ export default function Home() {
         <div className="content-width">
           <span className="eyebrow">THE NEXT CHAPTER STARTS HERE</span>
           <h2>Put your potential on display.</h2>
-          <p>
-            Build your athlete profile and take control of how your story is presented.
-          </p>
+          <p>Build your athlete profile and take control of how your story is presented.</p>
           <Link className="button" href="/signup">Get Started →</Link>
         </div>
       </section>
