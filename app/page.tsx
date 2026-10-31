@@ -1,92 +1,166 @@
 import Link from 'next/link';
 
 const sports = [
-  'Football', 'Basketball', 'Baseball / Softball', 'Soccer',
-  'Track & Field', 'Wrestling', 'Volleyball', 'Cross Country',
-  'Golf', 'Bowling', 'Swimming / Diving', 'Tennis',
-  'Lacrosse', 'Ice / Field Hockey',
+  'Football',
+  'Basketball',
+  'Baseball / Softball',
+  'Soccer',
+  'Track & Field',
+  'Wrestling',
+  'Volleyball',
+  'Cross Country',
+  'Golf',
+  'Bowling',
+  'Swimming / Diving',
+  'Tennis',
+  'Lacrosse',
+  'Ice / Field Hockey'
 ];
 
 const features = [
-  {
-    number: '01',
-    title: 'BUILD YOUR PROFILE',
-    body: 'Give coaches and brands a polished destination for your athletic story, achievements and goals.',
-  },
-  {
-    number: '02',
-    title: 'SHOW YOUR GAME',
-    body: 'Organize highlights, images, academic milestones and verified performance information.',
-  },
-  {
-    number: '03',
-    title: 'OWN YOUR NEXT LEVEL',
-    body: 'Build a recruiting presence now and develop a professional NIL brand as your journey evolves.',
-  },
+  ['01', 'GET RECRUITED'],
+  ['02', 'SHOWCASE TALENT'],
+  ['03', 'BUILD YOUR BRAND']
 ];
 
 export default function Home() {
   return (
     <>
-      <section className="hero-live" aria-labelledby="hero-heading">
-        <div className="hero-glow" aria-hidden="true" />
-        <div className="hero-inner content-width">
-          <div className="hero-copy">
-            <p className="eyebrow hero-eyebrow">RECRUIT <span>|</span> NIL <span>|</span> BRAND <span>|</span> ELEVATE</p>
-            <p className="hero-kicker">THE RECRUITING &amp; NIL PLATFORM FOR <strong>ALL ATHLETES</strong></p>
-            <h1 id="hero-heading">MORE THAN A PROFILE.<br />A PLATFORM FOR <em>YOUR NEXT LEVEL.</em></h1>
-            <p className="hero-description">
-              Build your exposure, showcase your talent, connect with opportunities,
-              and grow your athletic brand — all in one place.
+      <section className="hero-premium">
+        <div className="hero-premium-bg" aria-hidden="true" />
+        <div className="hero-premium-lines" aria-hidden="true" />
+
+        <div className="content-width hero-premium-grid">
+          <div className="hero-premium-copy">
+            <span className="eyebrow">
+              RECRUIT &nbsp; | &nbsp; NIL &nbsp; | &nbsp; BRAND &nbsp; | &nbsp; ELEVATE
+            </span>
+
+            <p className="hero-kicker">
+              THE RECRUITING & NIL PLATFORM FOR <span>ALL ATHLETES</span>
             </p>
+
+            <h1>
+              MORE THAN
+              <br />
+              A PROFILE.
+              <br />
+              A PLATFORM FOR
+              <br />
+              <em>YOUR NEXT LEVEL.</em>
+            </h1>
+
+            <p className="hero-description">
+              Build your exposure, showcase your talent, connect with
+              opportunities, and grow your athletic brand — all in one place.
+            </p>
+
             <div className="hero-buttons">
-              <Link href="/signup" className="button">Create Your Athlete Profile <span aria-hidden="true">→</span></Link>
-              <Link href="/how-it-works" className="outline-button">See How It Works <span aria-hidden="true">→</span></Link>
+              <Link href="/signup" className="button">
+                Create Your Athlete Profile →
+              </Link>
+              <Link href="/how-it-works" className="outline-button">
+                See How It Works →
+              </Link>
             </div>
-            <p className="hero-note">HIGH SCHOOL RECRUITING <span>•</span> COLLEGIATE NIL <span>•</span> EVERY SPORT</p>
-            <div className="hero-proof" aria-label="Platform capabilities">
-              <div><span className="hero-proof-index">01</span> GET RECRUITED</div>
-              <div><span className="hero-proof-index">02</span> SHOWCASE TALENT</div>
-              <div><span className="hero-proof-index">03</span> BUILD YOUR BRAND</div>
+
+            <p className="hero-note">
+              HIGH SCHOOL RECRUITING &nbsp; • &nbsp; COLLEGIATE NIL &nbsp; • &nbsp; EVERY SPORT
+            </p>
+
+            <div className="hero-feature-mini">
+              {features.map(([n, label]) => (
+                <div className="hero-feature-mini-card" key={n}>
+                  <strong>{n}</strong>
+                  <span>{label}</span>
+                </div>
+              ))}
             </div>
           </div>
 
-          <div className="hero-showcase">
-            <figure className="hero-lineup">
+          <div className="hero-premium-visual">
+            <div className="athlete-banner-card">
               <img
-                src="/images/prospect-vault-athlete-lineup.webp"
-                alt="A diverse lineup of athletes from multiple sports standing under stadium lights"
-                width="1055"
-                height="320"
+                src="/images/prospect-vault-athletes.jpg"
+                alt="Diverse athletes representing multiple sports"
               />
-              <figcaption>EVERY ATHLETE HAS A STORY WORTH SEEING.</figcaption>
-            </figure>
-            <div className="showcase-devices" aria-label="Illustrative athlete profile desktop and phone previews">
-              <div className="preview-laptop">
-                <div className="preview-toolbar" aria-hidden="true"><span /><span /><span /><small>THE PROSPECT VAULT / PROFILE PREVIEW</small></div>
-                <div className="preview-laptop-screen">
-                  <img src="/icons/prospect-vault-app-icon.png" alt="" width="132" height="132" className="preview-brand-icon" />
-                  <div className="preview-athlete-details">
-                    <span className="preview-label">SAMPLE ATHLETE PROFILE</span>
-                    <strong>JADEN CARTER</strong>
-                    <span>Quarterback · Class of 2027</span>
-                    <div className="preview-divider" />
-                    <div className="preview-checks"><span>✓ Film &amp; highlights</span><span>✓ Performance stats</span><span>✓ Academics</span><span>✓ Recruiting information</span></div>
-                  </div>
-                </div>
-                <div className="laptop-stand" aria-hidden="true" />
-              </div>
-              <div className="preview-phone" aria-label="Mobile app icon preview">
-                <div className="phone-notch" aria-hidden="true" />
-                <img src="/icons/prospect-vault-app-icon.png" alt="The Prospect Vault app icon" width="110" height="110" />
-                <span>YOUR VAULT.<br />ANYWHERE.</span>
-                <div className="phone-home" aria-hidden="true" />
+              <div className="athlete-banner-caption">
+                EVERY ATHLETE HAS A STORY WORTH SEEING.
               </div>
             </div>
-            <p className="showcase-caption">A professional profile on every screen.</p>
+
+            <div className="device-showcase">
+              <div className="laptop-shell">
+                <div className="laptop-topbar">
+                  <span />
+                  <span />
+                  <span />
+                  <p>THE PROSPECT VAULT / PROFILE PREVIEW</p>
+                </div>
+
+                <div className="laptop-screen">
+                  <div className="laptop-screen-left">
+                    <img
+                      src="/icons/prospect-vault-app-icon.png"
+                      alt="The Prospect Vault app icon"
+                      className="device-icon"
+                    />
+                  </div>
+
+                  <div className="laptop-screen-right">
+                    <p className="screen-label">SAMPLE ATHLETE PROFILE</p>
+                    <h3>JADEN CARTER</h3>
+                    <p className="screen-sub">
+                      Quarterback · Class of 2027
+                    </p>
+
+                    <div className="screen-checks">
+                      <span>✓ Film & highlights</span>
+                      <span>✓ Performance stats</span>
+                      <span>✓ Academics</span>
+                      <span>✓ Recruiting information</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="phone-shell">
+                <div className="phone-notch" />
+                <div className="phone-screen">
+                  <img
+                    src="/icons/prospect-vault-app-icon.png"
+                    alt="The Prospect Vault mobile icon"
+                    className="phone-icon"
+                  />
+                  <p>YOUR VAULT.<br />ANYWHERE.</p>
+                </div>
+              </div>
+            </div>
+
+            <p className="screen-footnote">
+              A professional profile on every screen.
+            </p>
           </div>
         </div>
       </section>
+
+      <section className="section content-width">
+        <div className="section-heading">
+          <span className="eyebrow">BUILT FOR EVERY ATHLETE</span>
+          <h2>One platform. Every sport. Every ambition.</h2>
+        </div>
+
+        <div className="sport-grid">
+          {sports.map((s) => (
+            <span className="sport-chip" key={s}>
+              {s}
+            </span>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
 
       <section className="hero-action content-width" aria-labelledby="spotlight-heading">
         <div>
