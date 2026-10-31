@@ -73,7 +73,17 @@ export default function Home() {
           height={625}
           alt="Multicultural athletes representing baseball, basketball, football, soccer and track, alongside The Prospect Vault desktop and phone previews with the official logo"
         />
-        <div className="vault-hero__light" aria-hidden="true" />
+        {/* Cinematic moving stadium spotlight */}
+<div
+  className="vault-hero__stadium-light"
+  aria-hidden="true"
+/>
+
+{/* Gold light traveling along the bottom */}
+<div
+  className="vault-hero__light"
+  aria-hidden="true"
+/>
       </section>
 
       {/* The full sports strip from the approved concept is a separate image, never duplicated in the hero. */}
