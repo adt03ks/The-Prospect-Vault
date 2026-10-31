@@ -214,3 +214,231 @@ label { display: block; font-weight: 600; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* ================================================================
+   THE PROSPECT VAULT — PREMIUM HOME HERO
+   Compatible with the hero-premium JSX provided in the redesign.
+   Existing shared styles for signup, dashboard, pricing, etc. stay intact.
+   ================================================================ */
+.hero-premium {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(46px, 5vw, 76px) 0 60px;
+  border-bottom: 1px solid #8f6829;
+  background:
+    radial-gradient(ellipse at 80% 16%, rgba(65, 80, 131, .32), transparent 43%),
+    radial-gradient(ellipse at 53% 95%, rgba(145, 87, 19, .18), transparent 48%),
+    #07090e;
+}
+.hero-premium-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(6, 8, 12, .94), rgba(6, 8, 12, .12) 85%);
+}
+.hero-premium-lines {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(127deg, transparent 1%, rgba(226, 154, 34, .25) 1.18%, transparent 1.5%, transparent 18%, rgba(255, 201, 87, .065) 18.13%, transparent 19%),
+    linear-gradient(45deg, transparent 86%, rgba(237, 173, 57, .15) 86.2%, transparent 86.6%);
+}
+.hero-premium-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.06fr) minmax(0, .94fr);
+  align-items: center;
+  gap: clamp(28px, 3.1vw, 54px);
+}
+.hero-premium-copy { min-width: 0; animation: premium-enter .7s ease-out both; }
+.hero-premium-copy .hero-kicker {
+  margin: 22px 0 18px;
+  font-size: clamp(12px, 1.05vw, 16px);
+  font-weight: 850;
+  color: #eed9a5;
+  letter-spacing: .025em;
+}
+.hero-premium-copy .hero-kicker span { color: #ffda78; }
+.hero-premium-copy h1 {
+  margin: 0;
+  font-size: clamp(40px, 4.6vw, 76px);
+  line-height: 1.015;
+  font-weight: 950;
+  font-style: italic;
+  letter-spacing: -.045em;
+  text-transform: uppercase;
+  color: #f6f2ea;
+  text-shadow: 0 5px 24px rgba(0, 0, 0, .6);
+}
+.hero-premium-copy h1 em { color: var(--goldlight); font-style: inherit; }
+.hero-premium-copy .hero-description {
+  max-width: 620px;
+  margin: 22px 0 0;
+  color: #f0eae0;
+  font-size: clamp(16px, 1.3vw, 19px);
+  line-height: 1.56;
+}
+.hero-premium-copy .hero-buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 25px; }
+.hero-premium-copy .hero-buttons a { min-height: 49px; text-align: center; }
+.hero-premium-copy .hero-note {
+  margin: 19px 0 0;
+  color: #dbc58d;
+  font-size: 11px;
+  letter-spacing: .06em;
+  font-weight: 850;
+  line-height: 1.6;
+}
+.hero-feature-mini {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 25px;
+}
+.hero-feature-mini-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 88px;
+  padding: 13px 8px;
+  border: 1px solid #80602e;
+  border-radius: 12px;
+  background: linear-gradient(145deg, rgba(50, 34, 16, .86), rgba(12, 14, 18, .93));
+  box-shadow: inset 0 1px rgba(255, 223, 135, .07);
+  text-align: center;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.hero-feature-mini-card:hover { transform: translateY(-3px); border-color: #e6b654; box-shadow: 0 8px 22px #0006; }
+.hero-feature-mini-card strong { color: var(--goldlight); font-size: clamp(23px, 2.4vw, 33px); font-weight: 950; line-height: 1; }
+.hero-feature-mini-card span { margin-top: 7px; color: #fff8ec; font-size: clamp(10px, .95vw, 13px); font-weight: 900; }
+.hero-premium-visual { min-width: 0; animation: premium-enter .9s ease-out both; }
+.athlete-banner-card {
+  position: relative;
+  margin: 0;
+  border: 1px solid #aa7f31;
+  border-radius: 19px;
+  overflow: hidden;
+  background: #0d1118;
+  box-shadow: 0 20px 50px #0009, 0 0 24px #dba03616;
+}
+.athlete-banner-card img { display: block; width: 100%; height: auto; object-fit: contain; }
+.athlete-banner-caption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 32px 14px 13px;
+  background: linear-gradient(transparent, rgba(4, 6, 9, .93));
+  color: #ffdd83;
+  font-size: clamp(10px, 1vw, 14px);
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 9px #000;
+}
+.device-showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(105px, 10vw, 146px);
+  align-items: end;
+  gap: 14px;
+  margin-top: 18px;
+}
+.laptop-shell {
+  min-width: 0;
+  border: 1px solid #a87f34;
+  border-radius: 16px 16px 7px 7px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #30333a, #0e1016 44%);
+  box-shadow: 0 16px 37px #000a;
+}
+.laptop-topbar { display: flex; align-items: center; gap: 5px; padding: 10px 12px; border-bottom: 1px solid #65512b; }
+.laptop-topbar span { flex: 0 0 6px; width: 6px; height: 6px; border-radius: 50%; background: #9c8548; }
+.laptop-topbar p { overflow: hidden; margin: 0 0 0 8px; color: #b4a06e; font-size: 9px; font-weight: 800; letter-spacing: .04em; white-space: nowrap; text-overflow: ellipsis; }
+.laptop-screen {
+  display: grid;
+  grid-template-columns: minmax(80px, 33%) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(10px, 1.5vw, 24px);
+  min-width: 0;
+  min-height: 210px;
+  padding: clamp(12px, 1.5vw, 23px);
+  background: radial-gradient(circle at left, rgba(194, 127, 35, .14), transparent 55%), #090c12;
+}
+.laptop-screen-left, .laptop-screen-right { min-width: 0; }
+.device-icon { display: block; width: 100%; max-width: 170px; aspect-ratio: 1; object-fit: cover; border: 1px solid #bd8d3b; border-radius: 18%; box-shadow: 0 0 25px #e9b94f2a; }
+.laptop-screen-right .screen-label { margin: 0 0 7px; color: #ffd47a; font-size: clamp(8px, .8vw, 11px); font-weight: 900; letter-spacing: .07em; text-transform: uppercase; }
+.laptop-screen-right h3 { margin: 0; color: #fff; font-size: clamp(20px, 2.4vw, 35px); line-height: 1.06; font-weight: 950; text-transform: uppercase; }
+.laptop-screen-right .screen-sub { margin: 7px 0 11px; color: #ded3c1; font-size: clamp(10px, 1vw, 13px); }
+.screen-checks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px 10px; border-top: 1px solid #62502e; padding-top: 12px; }
+.screen-checks span { color: #f7eddc; font-size: clamp(9px, .8vw, 12px); line-height: 1.3; }
+.phone-shell {
+  position: relative;
+  min-width: 0;
+  height: 275px;
+  padding: 18px 8px 9px;
+  border: 2px solid #ad8439;
+  border-radius: 26px;
+  background: linear-gradient(160deg, #161b23, #080a0f);
+  box-shadow: 0 14px 35px #0009;
+}
+.phone-notch { width: 42%; height: 6px; margin: -10px auto 13px; border-radius: 20px; background: #687079; }
+.phone-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  min-height: 226px;
+  border-radius: 17px;
+  background: radial-gradient(circle at center, #292013, #070a10 78%);
+  padding: 10px;
+  text-align: center;
+}
+.phone-icon { display: block; width: min(100%, 98px); aspect-ratio: 1; object-fit: cover; border: 1px solid #d4a54f; border-radius: 18%; box-shadow: 0 0 20px #dba83e38; }
+.phone-screen p { margin: 0; color: #f9d881; font-size: clamp(10px, .95vw, 14px); font-weight: 900; line-height: 1.25; letter-spacing: .065em; }
+.screen-footnote { margin: 12px 0 0; color: #d9be89; font-size: 11px; text-align: right; letter-spacing: .045em; }
+@keyframes premium-enter { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 1120px) {
+  .hero-premium-grid { grid-template-columns: 1fr; }
+  .hero-premium-copy { max-width: 790px; }
+  .hero-premium-copy h1 { font-size: clamp(42px, 7vw, 78px); }
+  .hero-premium-visual { width: min(100%, 790px); margin: 0 auto; }
+  .hero-feature-mini { max-width: 740px; }
+  .screen-checks span { font-size: 12px; }
+}
+@media (max-width: 700px) {
+  .hero-premium { padding: 44px 0 42px; }
+  .hero-premium-copy h1 { font-size: clamp(35px, 9vw, 58px); }
+  .hero-premium-copy .hero-description { font-size: 16px; }
+  .hero-premium-copy .hero-buttons a { width: 100%; }
+  .device-showcase { grid-template-columns: minmax(0, 1fr) 106px; gap: 9px; }
+  .laptop-screen { grid-template-columns: minmax(60px, 35%) minmax(0, 1fr); min-height: 160px; padding: 9px; gap: 9px; }
+  .laptop-screen-right h3 { font-size: clamp(15px, 4vw, 23px); }
+  .laptop-screen-right .screen-sub { font-size: 10px; }
+  .screen-checks { grid-template-columns: 1fr; gap: 4px; padding-top: 7px; }
+  .screen-checks span { font-size: 9px; }
+  .phone-shell { height: 218px; border-radius: 20px; padding-inline: 6px; }
+  .phone-screen { min-height: 173px; }
+  .phone-icon { width: 76px; }
+  .phone-screen p { font-size: 10px; }
+  .hero-feature-mini { gap: 7px; }
+}
+@media (max-width: 420px) {
+  .hero-premium-copy h1 { font-size: clamp(32px, 9vw, 39px); }
+  .hero-feature-mini-card { padding: 10px 5px; }
+  .hero-feature-mini-card span { font-size: 9px; }
+  .device-showcase { grid-template-columns: minmax(0, 1fr) 88px; gap: 7px; }
+  .laptop-topbar p { font-size: 7px; }
+  .laptop-screen-right .screen-label { font-size: 7px; }
+  .laptop-screen-right h3 { font-size: 14px; }
+  .screen-checks { display: none; }
+  .phone-shell { height: 186px; padding-top: 15px; }
+  .phone-screen { min-height: 144px; }
+  .phone-notch { margin-top: -7px; }
+  .phone-icon { width: 58px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-premium-copy, .hero-premium-visual { animation: none !important; }
+}
