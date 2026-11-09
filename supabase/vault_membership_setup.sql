@@ -32,7 +32,7 @@ create table public.vault_media (
   storage_path text,
   video_url text,
   created_at timestamptz not null default now(),
-  constraint vault_media_kind_check check (
+  constraint vault_media_payload_check check (
     (kind = 'photo' and storage_path is not null and video_url is null)
     or (kind = 'video' and video_url is not null and storage_path is null)
   )
