@@ -32,7 +32,7 @@ export default function DomainPage() {
       <p>{r.available?"Available":"Unavailable or not confirmed"}</p>
       {r.available&&<><p>Registration: {r.price==null?"Quote unavailable":`$${r.price}`} | Renewal: {r.renewalPrice==null?"Quote unavailable":`$${r.renewalPrice}`} {r.years?`(${r.years} year term)`:""}</p>
       {r.premium&&<p>Premium-priced domain</p>}
-      <a style={{color:"#f9d67a"}} href={`/domains/checkout?domain=${encodeURIComponent(r.domain)}`}>Purchase this domain</a>
+      <p>Domain purchasing is not yet enabled. You can search available names while we complete secure checkout.</p>
       </>}
       <small style={{display:"block",marginTop:10}}>Prices and availability are estimates until the checkout quote is confirmed.</small>
     </section>)}
